@@ -1,3 +1,5 @@
+import type { ComponentType } from "react";
+
 /**
  * Tipos do "registro de apps" do portfólio.
  *
@@ -53,12 +55,17 @@ export interface ProjectMeta {
   description: string;
   /** Stack / tecnologias. */
   tags: string[];
-  /** Caminho da imagem (em /public). */
-  thumbnail: string;
+  /** Caminho da imagem (em /public). Opcional — usa fallback com ícone. */
+  thumbnail?: string;
+  /** Ícone (react-icons) usado no fallback quando não há thumbnail. */
+  icon?: ComponentType;
   kind: AppKind;
 
   /** URL do app estático servido de /public (kind "embed"). */
   embedUrl?: string;
+
+  /** Imagens do projeto exibidas em um carrossel no modal. */
+  gallery?: string[];
 
   /** Link externo (demo/GitHub) para kind "external". */
   externalUrl?: string;

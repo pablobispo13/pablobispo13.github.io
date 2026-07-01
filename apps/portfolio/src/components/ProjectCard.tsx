@@ -3,12 +3,15 @@ import {
   Box,
   Button,
   Card,
+  Flex,
   HStack,
+  Icon,
+  IconButton,
   Image,
   Text,
   Wrap,
 } from "@chakra-ui/react";
-import { FaGithub, FaPlay } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaPlay } from "react-icons/fa";
 import type { ProjectMeta } from "@/apps/types";
 
 interface Props {
@@ -24,6 +27,14 @@ const kindLabel: Record<ProjectMeta["kind"], string> = {
 
 export function ProjectCard({ project, onOpen }: Props) {
   const isExternal = project.kind === "external";
+  // Abre no modal quando é app embutido, full-stack ou tem galeria de imagens.
+  const openable = !isExternal || !!project.gallery?.length;
+  // Demo ao vivo só quando o link externo é diferente do repositório.
+  const liveUrl =
+    project.externalUrl && project.externalUrl !== project.repoUrl
+      ? project.externalUrl
+      : undefined;
+  const primaryHref = liveUrl ?? project.repoUrl ?? project.externalUrl;
 
   return (
     <Card.Root
@@ -39,13 +50,38 @@ export function ProjectCard({ project, onOpen }: Props) {
       }}
     >
       <Box position="relative" aspectRatio={16 / 10} overflow="hidden">
-        <Image
-          src={project.thumbnail}
-          alt={project.title}
-          w="full"
-          h="full"
-          objectFit="cover"
-        />
+        {project.thumbnail ? (
+          <Image
+            src={project.thumbnail}
+            alt={project.title}
+            w="full"
+            h="full"
+            objectFit="cover"
+          />
+        ) : (
+          <Flex
+            w="full"
+            h="full"
+            align="center"
+            justify="center"
+            bgGradient="to-br"
+            gradientFrom="space.600"
+            gradientTo="brand.800"
+          >
+            {project.icon ? (
+              <Icon
+                as={project.icon}
+                boxSize={16}
+                color="whiteAlpha.800"
+                aria-hidden
+              />
+            ) : (
+              <Text fontSize="5xl" fontWeight="bold" color="whiteAlpha.700">
+                {project.title.charAt(0)}
+              </Text>
+            )}
+          </Flex>
+        )}
         <Badge
           position="absolute"
           top={3}
@@ -72,13 +108,30 @@ export function ProjectCard({ project, onOpen }: Props) {
       </Card.Body>
 
       <Card.Footer>
-        {isExternal ? (
+        {!openable ? (
           <HStack w="full">
-            <Button variant="outline" w="full" asChild>
-              <a href={project.externalUrl} target="_blank" rel="noreferrer">
-                <FaGithub /> Ver no GitHub
+            <Button
+              colorPalette={liveUrl ? "brand" : "gray"}
+              variant={liveUrl ? "solid" : "outline"}
+              flex="1"
+              asChild
+            >
+              <a href={primaryHref} target="_blank" rel="noreferrer">
+                {liveUrl ? <FaExternalLinkAlt /> : <FaGithub />}
+                {liveUrl ? "Ver ao vivo" : "Ver no GitHub"}
               </a>
             </Button>
+            {liveUrl && project.repoUrl ? (
+              <IconButton
+                asChild
+                variant="outline"
+                aria-label="Ver código no GitHub"
+              >
+                <a href={project.repoUrl} target="_blank" rel="noreferrer">
+                  <FaGithub />
+                </a>
+              </IconButton>
+            ) : null}
           </HStack>
         ) : (
           <Button
