@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Portfólio interativo do Pablo Bispo — monorepo com o portfólio e os apps (front-only e full-stack).",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @portfolio/web",
+    "build": "npm run build --workspace @portfolio/web",
+    "preview": "npm run preview --workspace @portfolio/web",
+    "lint": "npm run lint --workspace @portfolio/web"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

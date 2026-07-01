@@ -1,0 +1,145 @@
+:root {
+    /*   Conteudo   */
+    --cor-botão: #43CD80;
+    --cor-botão-hover: #51fb9e;
+}
+@media (prefers-color-scheme: light) {
+    /*   Padrao light   */
+    :root {
+
+        --cor-background: #F5F8FA;
+        --cor-item: #ffffff;
+        --cor-sombra: #dadada;
+        --cor-font: #292929;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    /*   Padrao dark   */
+    :root {
+
+        --cor-background: #222222;
+        --cor-item: #292929;
+        --cor-sombra: #16171C;
+        --cor-font: #dfdeee;
+    }
+}
+body {  
+    max-width: 506px;
+    min-width: 506px;
+    background-color: var(--cor-background);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    margin: 4% auto;  
+    font-family: 'Source Sans Pro', sans-serif;  
+    letter-spacing: 5px;  
+    font-size: 1.8rem;  
+    -moz-user-select: none;  
+    -webkit-user-select: none;  
+    -ms-user-select: none;  
+   }  
+   .calculator {  
+    max-height: 463px;
+    min-height: 463px;
+    padding: 20px;  
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+    border-radius: 1px;  
+   }  
+   
+   .input {  
+ 
+    border: 1px solid var(--cor-sombra);  
+    border-radius: 1px;  
+    color: var(--cor-font);
+    height: 60px;  
+    padding-right: 15px;  
+    padding-top: 10px;  
+    text-align: right;  
+    margin-right: 6px;  
+    font-size: 2.5rem;  
+    overflow-x: auto;  
+    transition: all .2s ease-in-out;  
+   }  
+   .input:hover {  
+    border: 1px solid var(--cor-font);  
+    -webkit-box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+    box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+   }   
+   .buttons{
+    position: fixed;
+   }
+   .operadores div {  
+     
+    display: inline-block;  
+    border: 1px solid var(--cor-sombra);  
+    border-radius: 1px;  
+    width: 80px;  
+    text-align: center;  
+    padding: 10px;  
+    margin: 20px 4px 10px 0;  
+    cursor: pointer;  
+    background-color: var(--cor-item);  
+    color: var(--cor-font);
+    transition: border-color .2s ease-in-out, background-color .2s, box-shadow .2s;  
+   }  
+   .operators div:hover {  
+    background-color: var(--cor-item);  
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+    border-color: var(--cor-font);  
+   }  
+   .operators div:active {  
+    font-weight: bold;  
+   }  
+   .leftPanel {  
+    display: inline-block;  
+   }  
+   .numeros div {  
+    display: inline-block;  
+    border: 1px solid var(--cor-sombra);  
+    color: var(--cor-font);
+    border-radius: 1px;  
+    width: 80px;  
+    text-align: center;  
+    padding: 10px;  
+    margin: 10px 4px 10px 0;  
+    cursor: pointer;  
+    background-color: var(--cor-item);  
+    transition: border-color .2s ease-in-out, background-color .2s, box-shadow .2s;  
+   }  
+   .numeros div:hover {  
+    background-color: var(--cor-item);  
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+    border-color: var(--cor-font);  
+   }  
+   .numeros div:active {  
+    font-weight: bold;  
+   }  
+   div.igual {  
+    display: inline-block;  
+    height: 27px;
+    border: 1px solid var(--cor-sombra);  
+    border-radius: 1px;  
+    width: 80px;  
+    text-align: center;  
+    padding: 127px 10px;  
+    margin: 10px 6px 10px 0;  
+    vertical-align: top;  
+    cursor: pointer;  
+    color: #FFF;  
+    background-color: var( --cor-botão);  
+    transition: all .2s ease-in-out;  
+   }  
+   div.igual:hover {  
+    background-color: var( --cor-botão-hover);  
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);  
+    border-color:  var(--cor-font);  
+   }  
+   div.igual:active {  
+    font-weight: bold;  
+   }  

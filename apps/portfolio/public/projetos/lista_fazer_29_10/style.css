@@ -1,0 +1,160 @@
+:root {
+    /*   Conteudo   */
+    --cor-botão: #43CD80;
+    --cor-botão-hover: #51fb9e;
+    --color-box-shadow:rgba(0,0,0,0.2);
+}
+@media (prefers-color-scheme: light) {
+    /*   Padrao light   */
+    :root {
+
+        --cor-background: #F5F8FA;
+        --cor-background_ul_2: #f7f7f7;
+        --cor-background_ul_selected: #d8d8d8;
+        --cor-background_ul_hover: #c4c4c4;
+        --cor-item: #ffffff;
+        --cor-sombra: #020101;
+        --cor-font: #292929;
+        --cor-font-popup:#292929;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    /*   Padrao dark   */
+    :root {
+
+        --cor-background: #222222;
+        --cor-background_ul_2: #3a3a3a;
+        --cor-background_ul_selected: #5a5a5a;
+        --cor-background_ul_hover: #949494;
+        --cor-item: #ffffff;
+        --cor-sombra: #16171C;
+        --cor-font: #ffffff;
+        --cor-font-popup:#ffffff;
+    }
+}
+* {
+    box-sizing: border-box;
+  }
+    
+ html {
+    background: var(--cor-background);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    margin: 0;
+    min-width: 250px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: var(--cor-background);
+    color: var(--cor-font);
+    font-size: 18px;
+    transition: 0.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 3px;
+    margin-bottom: 5px;
+  }
+  ul li:nth-child(odd) {
+    background: var(--cor-background_ul_2);
+  }
+  ul li:hover {
+    background: var(--cor-background_ul_hover);
+  }
+  ul li.checked {
+    background: var(--cor-background_ul_selected);
+    color: var(--cor-font);
+    text-decoration: line-through;
+  }
+  ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+  }
+  .fechar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+  }
+  input {
+    margin: 0;
+    border: none;
+    background: var(--cor-background);
+    color: var(--cor-font);
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+  }
+  input:focus{
+    border-radius:3px;
+    border:3px solid var(--cor-font);
+    outline:none; 
+  }
+  .adicionar_btn {
+    padding: 10px;
+    width: 25%;
+    background: var(--cor-botão);
+    color: var(--cor-item);
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 3px;
+  }
+  
+  .adicionar_btn:hover {
+    background-color: var(--cor-botão-hover);
+  }
+
+  .lista {
+	 background: var(--cor-background);
+	 font-size: 20px;
+	 max-width: 500px;
+	 margin: auto;
+	 padding: 51px 1em;
+	 box-shadow: 0 5px 30px var(--color-box-shadow);
+     border-radius: 3px;
+}
+ .fazer {
+	 display: block;
+	 position: relative;
+	 margin: 0 auto;
+	 cursor: pointer;
+}
+.box{
+    font-size: 20px;
+    max-width: 500px;
+    margin: auto;
+    padding: 51px 1em;
+    
+}
+.swal2-popup{
+    background-color: var(--cor-background)!important;
+    color: var(--cor-font-popup)!important;
+}
+button.swal2-confirm.swal2-styled{
+    background-color: var(--cor-botão);
+}
+.swal2-title{
+     color: var(--cor-font-popup)!important;
+}

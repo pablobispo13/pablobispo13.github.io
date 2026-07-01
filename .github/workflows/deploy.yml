@@ -1,0 +1,61 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  # Publica a cada push na branch principal
+  push:
+    branches: [main]
+  # Permite rodar manualmente pela aba Actions
+  workflow_dispatch:
+
+# Permissões necessárias para o deploy no GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Garante um deploy por vez (cancela builds antigos ainda em andamento)
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install (monorepo / workspaces)
+        run: npm ci
+
+      - name: Build do portfólio
+        run: npm run build
+        env:
+          # Site de usuário (pablobispo13.github.io) publica na raiz -> "/".
+          # Se um dia virar um repo de projeto, mude para "/nome-do-repo/".
+          VITE_BASE: "/"
+
+      - name: Configura Pages
+        uses: actions/configure-pages@v5
+
+      - name: Sobe o artefato (dist do portfólio)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/portfolio/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
