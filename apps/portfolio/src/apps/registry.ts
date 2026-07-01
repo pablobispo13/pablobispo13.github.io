@@ -31,19 +31,19 @@ export const projects: ProjectMeta[] = [
     embedUrl: asset("projetos/lista_fazer_29_10/index.html"),
   },
   {
-    id: "next-rpg-backend",
-    title: "Next RPG — Backend/API",
+    id: "prisma-rpg-backend",
+    title: "Prisma RPG — Sistema de RPG",
     description:
-      "API de RPG feita com Next.js e Prisma, publicada na Vercel. Backend com banco de dados.",
-    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Fullstack"],
+      "Sistema completo de RPG: gerenciamento de fichas, personagens, mesas e combate interativo. Feito com Next.js e Prisma, publicado na Vercel.",
+    tags: ["Next.js", "TypeScript", "Prisma", "MongoDB", "Fullstack"],
     icon: FaDiceD20,
     kind: "external",
-    externalUrl: "https://next-rpg-backend.vercel.app",
-    repoUrl: "https://github.com/pablobispo13/next-rpg-backend",
-    // Substitua pelos prints reais em public/images/projetos/next-rpg/
+    externalUrl: "https://prismarpg.vercel.app",
+    repoUrl: "https://github.com/pablobispo13/prisma-rpg",
+    // Substitua pelos prints reais em public/images/projetos/prisma-rpg/
     // gallery: [
-    //   asset("images/projetos/next-rpg/01.svg"),
-    //   asset("images/projetos/next-rpg/02.svg"),
+    //   asset("images/projetos/prisma-rpg/01.svg"),
+    //   asset("images/projetos/prisma-rpg/02.svg"),
     //   asset("images/projetos/next-rpg/03.svg"),
     // ],
   },
@@ -51,8 +51,8 @@ export const projects: ProjectMeta[] = [
     id: "overlay-twitch",
     title: "Overlay para Twitch",
     description:
-      "Overlay de memes (imagens, vídeos e sons) arrastáveis para lives na Twitch via OBS, em tempo real com Socket.IO.",
-    tags: ["React", "Vite", "Express", "Socket.IO"],
+      "Overlay de memes (imagens, vídeos e sons) arrastáveis para lives na Twitch via OBS, em tempo real com Socket.IO. Mídias no Cloudinary e deploy no Render.",
+    tags: ["React", "Vite", "Express", "Socket.IO", "Cloudinary", "Render"],
     icon: FaTwitch,
     kind: "external",
     repoUrl: "https://github.com/pablobispo13/overlay-twitch",
