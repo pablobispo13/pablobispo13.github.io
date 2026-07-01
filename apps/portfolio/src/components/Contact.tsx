@@ -7,19 +7,13 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { FaEnvelope, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { useColorModeValue } from "@/components/ui/color-mode";
+import { FaEnvelope, FaLinkedin } from "react-icons/fa";
 
 const links = [
   {
     label: "Email",
     href: "mailto:contato.pabloed@gmail.com?subject=Visualizei seu portifolio",
     icon: FaEnvelope,
-  },
-  {
-    label: "Instagram",
-    href: "https://instagram.com/pablobispo13",
-    icon: FaInstagram,
   },
   {
     label: "LinkedIn",
@@ -29,10 +23,16 @@ const links = [
 ];
 
 export function Contact() {
-  const bg = useColorModeValue("brand.50", "#111a22");
-
   return (
-    <Box as="section" id="contato" bg={bg} py={{ base: 16, md: 24 }}>
+    <Box
+      as="section"
+      id="contato"
+      bg="space.800"
+      borderTopWidth="1px"
+      borderBottomWidth="1px"
+      borderColor="whiteAlpha.100"
+      py={{ base: 16, md: 24 }}
+    >
       <Container maxW="4xl">
         <Stack gap={6} align="center" textAlign="center">
           <Heading as="h2" fontSize={{ base: "3xl", md: "4xl" }}>

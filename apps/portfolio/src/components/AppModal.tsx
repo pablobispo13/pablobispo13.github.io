@@ -46,7 +46,12 @@ export function AppModal({ project, open, onClose }: Props) {
                     </a>
                   </IconButton>
                 ) : null}
-                <Dialog.CloseTrigger asChild>
+                <Dialog.CloseTrigger
+                  asChild
+                  position="static"
+                  top="auto"
+                  insetEnd="auto"
+                >
                   <CloseButton size="sm" />
                 </Dialog.CloseTrigger>
               </HStack>

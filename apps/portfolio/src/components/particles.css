@@ -1,0 +1,21 @@
+/* Canvas de partículas (starfield) — fundo fixo atrás de todo o conteúdo. */
+.particles-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* Dica de rolagem no Hero (sobe e desce suavemente). */
+@keyframes bh-bob {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}

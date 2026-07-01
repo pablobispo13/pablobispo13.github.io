@@ -5,8 +5,8 @@ import { App } from "@/App";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    {/* Tema escuro por padrão, como o site original */}
-    <Provider defaultTheme="dark">
+    {/* Tema espacial: dark fixo */}
+    <Provider forcedTheme="dark">
       <App />
     </Provider>
   </StrictMode>,

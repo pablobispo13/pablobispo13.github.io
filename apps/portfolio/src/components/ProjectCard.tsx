@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { FaGithub, FaPlay } from "react-icons/fa";
 import type { ProjectMeta } from "@/apps/types";
-import { useColorModeValue } from "@/components/ui/color-mode";
 
 interface Props {
   project: ProjectMeta;
@@ -24,18 +23,20 @@ const kindLabel: Record<ProjectMeta["kind"], string> = {
 };
 
 export function ProjectCard({ project, onOpen }: Props) {
-  const border = useColorModeValue("gray.200", "whiteAlpha.200");
-  const cardBg = useColorModeValue("white", "#161b22");
   const isExternal = project.kind === "external";
 
   return (
     <Card.Root
-      bg={cardBg}
+      bg="space.700"
       borderWidth="1px"
-      borderColor={border}
+      borderColor="whiteAlpha.200"
       overflow="hidden"
-      transition="transform 0.2s, box-shadow 0.2s"
-      _hover={{ transform: "translateY(-4px)", boxShadow: "lg" }}
+      transition="transform 0.2s, box-shadow 0.2s, border-color 0.2s"
+      _hover={{
+        transform: "translateY(-4px)",
+        boxShadow: "0 0 30px -6px rgba(162, 56, 245, 0.5)",
+        borderColor: "brand.500",
+      }}
     >
       <Box position="relative" aspectRatio={16 / 10} overflow="hidden">
         <Image

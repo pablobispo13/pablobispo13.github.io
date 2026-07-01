@@ -2,9 +2,18 @@ import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 
 /**
  * Tema do portfólio (Chakra UI v3).
- * A paleta `brand` é o verde-água usado nos destaques do site.
+ * A paleta `brand` é um roxo/magenta inspirado no disco de acreção de um
+ * buraco negro (violeta com brilho magenta).
  */
 const config = defineConfig({
+  globalCss: {
+    "html, body": {
+      // Fundo base bem escuro arroxeado, com brilho ambiente sutil.
+      background:
+        "radial-gradient(1000px 700px at 82% 8%, rgba(80,25,130,0.22), transparent 60%), radial-gradient(800px 600px at 10% 92%, rgba(140,35,120,0.14), transparent 60%), #07040f",
+      backgroundAttachment: "fixed",
+    },
+  },
   theme: {
     tokens: {
       fonts: {
@@ -13,16 +22,23 @@ const config = defineConfig({
       },
       colors: {
         brand: {
-          50: { value: "#e6fbf5" },
-          100: { value: "#c3f3e5" },
-          200: { value: "#8fe7cf" },
-          300: { value: "#54d6b4" },
-          400: { value: "#25bd97" },
-          500: { value: "#0fa17f" },
-          600: { value: "#088067" },
-          700: { value: "#0a6653" },
-          800: { value: "#0c5143" },
-          900: { value: "#0b3d33" },
+          50: { value: "#faf5ff" },
+          100: { value: "#f1e3ff" },
+          200: { value: "#e4c7ff" },
+          300: { value: "#cf9dff" },
+          400: { value: "#b96bff" },
+          500: { value: "#a238f5" },
+          600: { value: "#8b21e0" },
+          700: { value: "#7016b8" },
+          800: { value: "#571394" },
+          900: { value: "#3f0d6e" },
+        },
+        // Camadas de fundo escuras arroxeadas usadas nos componentes.
+        space: {
+          900: { value: "#07040f" },
+          800: { value: "#0d0820" },
+          700: { value: "#150f2b" },
+          600: { value: "#1c1440" },
         },
       },
     },
@@ -31,8 +47,8 @@ const config = defineConfig({
         brand: {
           solid: { value: "{colors.brand.500}" },
           contrast: { value: "white" },
-          fg: { value: "{colors.brand.600}" },
-          muted: { value: "{colors.brand.100}" },
+          fg: { value: "{colors.brand.300}" },
+          muted: { value: "{colors.brand.200}" },
           emphasized: { value: "{colors.brand.400}" },
           focusRing: { value: "{colors.brand.500}" },
         },

@@ -29,26 +29,4 @@ export const projects: ProjectMeta[] = [
     kind: "embed",
     embedUrl: asset("projetos/lista_fazer_29_10/index.html"),
   },
-  {
-    id: "lol-invocador",
-    title: "API League of Legends — Dados do invocador",
-    description:
-      "Consome a API da Riot para buscar dados de um invocador. Front + PHP.",
-    tags: ["HTML", "CSS", "JavaScript", "PHP"],
-    thumbnail: asset("images/portfolio/imagem_buscar_dados.jpg"),
-    kind: "external",
-    externalUrl: "https://github.com/pablobispo13/LOL",
-    repoUrl: "https://github.com/pablobispo13/LOL",
-  },
-  {
-    id: "lol-ultima-partida",
-    title: "API League of Legends — Última partida",
-    description:
-      "Busca os invocadores da última partida via API da Riot. Front + PHP.",
-    tags: ["HTML", "CSS", "JavaScript", "PHP"],
-    thumbnail: asset("images/portfolio/imagem_buscar_dados_ultima_partida.jpg"),
-    kind: "external",
-    externalUrl: "https://github.com/pablobispo13/LOL",
-    repoUrl: "https://github.com/pablobispo13/LOL",
-  },
 ];
