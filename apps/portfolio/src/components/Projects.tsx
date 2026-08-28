@@ -4,7 +4,7 @@ import type { ProjectMeta } from "@/apps/types";
 import { ProjectCard } from "@/components/ProjectCard";
 
 interface Props {
-  onOpen: (project: ProjectMeta) => void;
+  onOpen: (project: ProjectMeta, initialIndex?: number) => void;
 }
 
 export function Projects({ onOpen }: Props) {

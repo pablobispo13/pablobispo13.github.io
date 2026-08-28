@@ -12,7 +12,13 @@ import type { ProjectMeta } from "@/apps/types";
 
 export function App() {
   const [active, setActive] = useState<ProjectMeta | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  const handleOpen = (project: ProjectMeta, initialIndex = 0) => {
+    setActive(project);
+    setActiveIndex(initialIndex);
+  };
 
   useEffect(() => {
     // Some com o loading quando a página termina de carregar (com um respiro).
@@ -33,7 +39,7 @@ export function App() {
       <Box position="relative" zIndex={1} minH="100dvh" color="gray.100">
         <Header />
         <Hero />
-        <Projects onOpen={setActive} />
+        <Projects onOpen={handleOpen} />
         <Contact />
         <Footer />
       </Box>
@@ -42,6 +48,7 @@ export function App() {
         project={active}
         open={active !== null}
         onClose={() => setActive(null)}
+        initialIndex={activeIndex}
       />
     </>
   );

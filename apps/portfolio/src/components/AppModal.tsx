@@ -16,9 +16,10 @@ interface Props {
   project: ProjectMeta | null;
   open: boolean;
   onClose: () => void;
+  initialIndex?: number;
 }
 
-export function AppModal({ project, open, onClose }: Props) {
+export function AppModal({ project, open, onClose, initialIndex = 0 }: Props) {
   const isEmbed = project?.kind === "embed" && !!project.embedUrl;
   const hasGallery = !!project?.gallery?.length;
   const liveUrl =
@@ -91,7 +92,12 @@ export function AppModal({ project, open, onClose }: Props) {
               ) : null}
 
               {hasGallery ? (
-                <Carousel images={project!.gallery!} alt={project!.title} />
+                <Carousel
+                  key={`${project!.id}-${initialIndex}`}
+                  images={project!.gallery!}
+                  alt={project!.title}
+                  initialIndex={initialIndex}
+                />
               ) : null}
 
               {project?.kind === "fullstack" && project.fullstack ? (

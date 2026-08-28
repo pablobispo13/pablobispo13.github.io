@@ -11,12 +11,19 @@ import {
   Text,
   Wrap,
 } from "@chakra-ui/react";
-import { FaExternalLinkAlt, FaGithub, FaPlay } from "react-icons/fa";
+import { useState, type MouseEvent } from "react";
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaExternalLinkAlt,
+  FaGithub,
+  FaPlay,
+} from "react-icons/fa";
 import type { ProjectMeta } from "@/apps/types";
 
 interface Props {
   project: ProjectMeta;
-  onOpen: (project: ProjectMeta) => void;
+  onOpen: (project: ProjectMeta, initialIndex?: number) => void;
 }
 
 const kindLabel: Record<ProjectMeta["kind"], string> = {
@@ -26,6 +33,7 @@ const kindLabel: Record<ProjectMeta["kind"], string> = {
 };
 
 export function ProjectCard({ project, onOpen }: Props) {
+  const [index, setIndex] = useState(0);
   const isExternal = project.kind === "external";
   // Abre no modal quando é app embutido, full-stack ou tem galeria de imagens.
   const openable = !isExternal || !!project.gallery?.length;
@@ -36,12 +44,27 @@ export function ProjectCard({ project, onOpen }: Props) {
       : undefined;
   const primaryHref = liveUrl ?? project.repoUrl ?? project.externalUrl;
 
+  const images = project.gallery?.length
+    ? project.gallery
+    : project.thumbnail
+      ? [project.thumbnail]
+      : [];
+  const hasCarousel = images.length > 1;
+
+  // Navegação da mini-galeria não deve abrir o modal do card.
+  const go = (e: MouseEvent, delta: number) => {
+    e.stopPropagation();
+    setIndex((prev) => (prev + delta + images.length) % images.length);
+  };
+
   return (
     <Card.Root
       bg="space.700"
       borderWidth="1px"
       borderColor="whiteAlpha.200"
       overflow="hidden"
+      cursor={openable ? "pointer" : "default"}
+      onClick={() => openable && onOpen(project, index)}
       transition="transform 0.2s, box-shadow 0.2s, border-color 0.2s"
       _hover={{
         transform: "translateY(-4px)",
@@ -50,9 +73,9 @@ export function ProjectCard({ project, onOpen }: Props) {
       }}
     >
       <Box position="relative" aspectRatio={16 / 10} overflow="hidden">
-        {project.thumbnail ? (
+        {images.length ? (
           <Image
-            src={project.thumbnail}
+            src={images[index]}
             alt={project.title}
             w="full"
             h="full"
@@ -91,6 +114,69 @@ export function ProjectCard({ project, onOpen }: Props) {
         >
           {kindLabel[project.kind]}
         </Badge>
+
+        {hasCarousel ? (
+          <>
+            <IconButton
+              aria-label="Imagem anterior"
+              onClick={(e) => go(e, -1)}
+              position="absolute"
+              top="50%"
+              left={2}
+              transform="translateY(-50%)"
+              size="xs"
+              variant="solid"
+              bg="blackAlpha.700"
+              color="white"
+              _hover={{ bg: "blackAlpha.900" }}
+              rounded="full"
+            >
+              <FaChevronLeft />
+            </IconButton>
+            <IconButton
+              aria-label="Próxima imagem"
+              onClick={(e) => go(e, 1)}
+              position="absolute"
+              top="50%"
+              right={2}
+              transform="translateY(-50%)"
+              size="xs"
+              variant="solid"
+              bg="blackAlpha.700"
+              color="white"
+              _hover={{ bg: "blackAlpha.900" }}
+              rounded="full"
+            >
+              <FaChevronRight />
+            </IconButton>
+
+            <HStack
+              position="absolute"
+              bottom={2}
+              left="50%"
+              transform="translateX(-50%)"
+              gap={1.5}
+            >
+              {images.map((src, i) => (
+                <Box
+                  key={src}
+                  as="button"
+                  aria-label={`Ir para imagem ${i + 1}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIndex(i);
+                  }}
+                  w={i === index ? "4" : "1.5"}
+                  h="1.5"
+                  rounded="full"
+                  bg={i === index ? "brand.400" : "whiteAlpha.600"}
+                  transition="all 0.2s"
+                  cursor="pointer"
+                />
+              ))}
+            </HStack>
+          </>
+        ) : null}
       </Box>
 
       <Card.Body gap={3}>
@@ -137,7 +223,10 @@ export function ProjectCard({ project, onOpen }: Props) {
           <Button
             colorPalette="brand"
             w="full"
-            onClick={() => onOpen(project)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpen(project, index);
+            }}
           >
             <FaPlay /> Abrir aplicação
           </Button>

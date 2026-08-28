@@ -37,15 +37,18 @@ export const projects: ProjectMeta[] = [
       "Sistema completo de RPG: gerenciamento de fichas, personagens, mesas e combate interativo. Feito com Next.js e Prisma, publicado na Vercel.",
     tags: ["Next.js", "TypeScript", "Prisma", "MongoDB", "Fullstack"],
     icon: FaDiceD20,
+    thumbnail: asset("images/projetos/prisma/login.png"),
     kind: "external",
     externalUrl: "https://prismarpg.vercel.app",
     repoUrl: "https://github.com/pablobispo13/prisma-rpg",
-    // Substitua pelos prints reais em public/images/projetos/prisma-rpg/
-    // gallery: [
-    //   asset("images/projetos/prisma-rpg/01.svg"),
-    //   asset("images/projetos/prisma-rpg/02.svg"),
-    //   asset("images/projetos/next-rpg/03.svg"),
-    // ],
+    gallery: [
+      asset("images/projetos/prisma/login.png"),
+      asset("images/projetos/prisma/tela-inicial-sem-mesa.png"),
+      asset("images/projetos/prisma/hub-mesas.png"),
+      asset("images/projetos/prisma/ficha-personagem.png"),
+      asset("images/projetos/prisma/visualizacao-combate.png"),
+      asset("images/projetos/prisma/tela-combate.png"),
+    ],
   },
   {
     id: "overlay-twitch",
@@ -54,8 +57,15 @@ export const projects: ProjectMeta[] = [
       "Overlay de memes (imagens, vídeos e sons) arrastáveis para lives na Twitch via OBS, em tempo real com Socket.IO. Mídias no Cloudinary e deploy no Render.",
     tags: ["React", "Vite", "Express", "Socket.IO", "Cloudinary", "Render"],
     icon: FaTwitch,
+    thumbnail: asset("images/projetos/overlay/tela-overlay.png"),
     kind: "external",
     repoUrl: "https://github.com/pablobispo13/overlay-twitch",
+    gallery: [
+      asset("images/projetos/overlay/tela-login.png"),
+      asset("images/projetos/overlay/tela-overlay.png"),
+      asset("images/projetos/overlay/exemplo-overlay-1.png"),
+      asset("images/projetos/overlay/exemplo-overlay-2.png"),
+    ],
   },
   {
     id: "pomodoro-task-manager",
@@ -64,7 +74,16 @@ export const projects: ProjectMeta[] = [
       "App de produtividade (Pomodoro + gestão de tarefas) para desktop, feito com Electron, React, Vite e shadcn/ui.",
     tags: ["Electron", "React", "TypeScript", "Tailwind"],
     icon: FaClock,
+    thumbnail: asset("images/projetos/pomodoro/tela-inicial.png"),
     kind: "external",
     repoUrl: "https://github.com/pablobispo13/pomodoro-task-manager",
+    gallery: [
+      asset("images/projetos/pomodoro/tela-inicial.png"),
+      asset("images/projetos/pomodoro/tela-foco.png"),
+      asset("images/projetos/pomodoro/tela-tarefas.png"),
+      asset("images/projetos/pomodoro/tela-dashboard.png"),
+      asset("images/projetos/pomodoro/tela-cadastros.png"),
+      asset("images/projetos/pomodoro/tela-configuracoes.png"),
+    ],
   },
 ];
